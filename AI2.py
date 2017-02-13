@@ -1,6 +1,7 @@
 #Need this for matrix operations
 import numpy as np
 import random
+import math
 
 def gradient_descent(x, y, n, m, alpha, max_iter):
     theta = np.ones(n) #Initialize theta as all 1
@@ -33,8 +34,26 @@ def read_table(filename, n, m):
         i += 1
     return x, y
 
+def normalize(v,n):
+    m = 0;# Media
+    for i in v:
+        m += i
+    m = m/n
+    sd = 0# Desviacion standard
+    for j in v:
+        sd+= math.pow(j-m,2)
+    sd = sd/n
+    sd = math.sqrt(sd)
+    l=0
+    for k in v: # Calculo los valores normalizados
+        k = (k - m)/sd
+        v[l] = k
+        l+=1
+    return v
+
 n = 2
 m = 62
-x, y = read_table("test.txt", n, m)
+x, y = read_table('test.txt', n, m)
+y = normalize(y,m);
 theta = gradient_descent(x, y, n, m, 0.1, 10)
 print(theta)
