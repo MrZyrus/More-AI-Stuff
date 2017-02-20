@@ -2,11 +2,14 @@
 import numpy as np
 
 
-def gradient_descent(x, y, n, m, alpha, max_iter):
+def gradient_descent(x, y, n, m, alpha, max_iter,filename):
     theta = np.ones(n) #Initialize theta as all 1
+    f = open(filename,'w')
     for i in range(0, max_iter): #Using max number of iterations
-        print("Iteration ", i, " Current theta ", theta)
         h = np.dot(x, theta) #First, calculate the hypothesis
+        error = np.sum((h - y)**2) / 2*m 
+        s = str(i) + " " + str(error) + "\n"
+        f.write(s)
         #Then the gradient, this is the hardest step to understand
         #What happens here is we take the formula, it's the sum as follows
         #sum = 0
@@ -44,12 +47,22 @@ n = 2
 m = 62
 x, y = read_table('data1.txt', n, m)
 x, y = normalize(x, y, n)
-theta = gradient_descent(x, y, n, m, 0.01, 20000)
+theta = gradient_descent(x, y, n, m, 0.1, 100,"res_D1_0.1.txt")
 print(theta)
 
 n = 4
 m = 20
 x, y = read_table('data2.txt', n, m)
 x, y = normalize(x, y, n)
-theta = gradient_descent(x, y, n, m, 0.01, 20000)
+theta = gradient_descent(x, y, n, m, 0.1, 50,"res_D2_0.1.txt")
+print(theta)
+theta = gradient_descent(x, y, n, m, 0.3, 50,"res_D2_0.3.txt")
+print(theta)
+theta = gradient_descent(x, y, n, m, 0.5, 50,"res_D2_0.5.txt")
+print(theta)
+theta = gradient_descent(x, y, n, m, 0.7, 50,"res_D2_0.7.txt")
+print(theta)
+theta = gradient_descent(x, y, n, m, 0.9, 50,"res_D2_0.9.txt")
+print(theta)
+theta = gradient_descent(x, y, n, m, 1.0, 50,"res_D2_1.0.txt")
 print(theta)
