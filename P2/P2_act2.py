@@ -185,7 +185,7 @@ data = read_data("datos_P2_EM2017_N2000_igualados.txt")
 prueba =  read_data("prueba.txt")
 for i in range(9):
         network.append(initialize_network(n_inputs, neurons, n_outputs))
-        print('Configuacion de dataset con 2000 patrones y %d neuronas: ' % neurons)
+        print('Configuacion de dataset con 2000 patrones igualados y %d neuronas: ' % neurons)
         print('Error de entrenamiento: %.3f' % train_network(network[index], data, 0.1, 500, n_outputs,0))
         perror,fn,fp = calcular_prueba(network[index], prueba)
         print('Error de prueba: %.3f' % perror)
