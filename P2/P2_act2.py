@@ -141,7 +141,7 @@ for i in range(9):
         print('Falsos positivos: %d' %fp)
         index+=1
         neurons+=1
-        neurons = 2
+neurons = 2
 data = read_data("datos_P2_EM2017_N2000.txt")
 prueba =  read_data("prueba.txt")
 for i in range(9):
