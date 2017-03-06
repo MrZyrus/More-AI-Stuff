@@ -98,3 +98,7 @@ neurons = 2
 network = initialize_network(n_inputs, neurons, n_outputs)
 data = read_data("datos_P2_EM2017_N500.txt")
 train_network(network, data, 0.1, 10000, n_outputs)
+prueba = read_data("prueba.txt")
+for row in prueba:
+    outputs = forward_propagate(network, row)
+    print("%.3f  %.3f  %d" % (row[0],row[1],outputs.index(max(outputs))))
