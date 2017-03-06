@@ -68,7 +68,7 @@ def update_weights(network, row, l_rate):
 			neuron['weights'][-1] += l_rate * neuron['delta']
 
 # Train a network for a fixed number of epochs
-def train_network(network, train, l_rate, n_epoch, n_outputs):
+def train_network(network, train, l_rate, n_epoch, n_outputs, file_out):
 	for epoch in range(n_epoch):
 		sum_error = 0
 		for row in train:
@@ -78,7 +78,9 @@ def train_network(network, train, l_rate, n_epoch, n_outputs):
 			sum_error += sum([(expected[i]-outputs[i])**2 for i in range(len(expected))])
 			backward_propagate_error(network, expected)
 			update_weights(network, row, l_rate)
-		print('>epoch=%d, lrate=%.3f, error=%.3f' % (epoch, l_rate, sum_error))
+		# e = str(sum_error) + "\n"
+		# file_out.write(e)
+		# print('>epoch=%d, lrate=%.3f, error=%.3f' % (epoch, l_rate, sum_error))
 
 def read_data(filename):
 	data = []
@@ -94,7 +96,18 @@ def read_data(filename):
 
 n_inputs = 2
 n_outputs = 2
-neurons = 2
+neurons = 10
 network = initialize_network(n_inputs, neurons, n_outputs)
-data = read_data("datos_P2_EM2017_N500.txt")
-train_network(network, data, 0.1, 10000, n_outputs)
+data = read_data("datos_P2_EM2017_N2000.txt")
+errores = open("errores_2000_10.txt",'w')
+colores = open("colores_2000_10.txt", "w")
+train_network(network, data, 0.1, 1000, n_outputs, errores)
+prueba = read_data("prueba.txt")
+for row in prueba:
+    outputs = forward_propagate(network, row)
+    x = str(row[0])
+    y = str(row[1])
+    c = str(outputs.index(max(outputs)))
+    l = x + " " + y + " " + c + "\n"
+    colores.write(l)
+    print("%.3f  %.3f  %d" % (row[0],row[1],outputs.index(max(outputs))))

@@ -155,7 +155,7 @@ for i in range(9):
         index+=1
         neurons+=1
 neurons = 2
-data = read_data("datos_P2_EM2017_N500_igualados.txt")
+data = read_data("datos_P2_N500_igualados.txt")
 prueba =  read_data("prueba.txt")
 for i in range(9):
         network.append(initialize_network(n_inputs, neurons, n_outputs))
@@ -168,7 +168,7 @@ for i in range(9):
         index+=1
         neurons+=1
 neurons = 2
-data = read_data("datos_P2_EM2017_N1000_igualados.txt")
+data = read_data("datos_P2_N1000_igualados.txt")
 prueba =  read_data("prueba.txt")
 for i in range(9):
         network.append(initialize_network(n_inputs, neurons, n_outputs))
@@ -181,7 +181,7 @@ for i in range(9):
         index+=1
         neurons+=1
 neurons = 2
-data = read_data("datos_P2_EM2017_N2000_igualados.txt")
+data = read_data("datos_P2_N2000_igualados.txt")
 prueba =  read_data("prueba.txt")
 for i in range(9):
         network.append(initialize_network(n_inputs, neurons, n_outputs))
