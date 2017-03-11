@@ -38,9 +38,9 @@ def clustering(k, data):
     return cluster
 
 data = read_data("iris.data.txt")
-cluster = clustering(2, data)
 
 print("Using 2-means\n")
+cluster = clustering(2, data)
 for i in cluster:
     for row in i:
         print(row)
